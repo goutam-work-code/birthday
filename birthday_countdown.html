@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #a78bfa 50%, #2dd4bf 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 900px;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            color: white;
+            font-size: 52px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+        
+        .quote {
+            color: rgba(255,255,255,0.85);
+            font-size: 15px;
+            margin-top: 10px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 40px 0;
+        }
+        
+        .time-box {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .time-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #a78bfa, #2dd4bf);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .time-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .number {
+            font-size: 56px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .message {
+            color: white;
+            font-size: 22px;
+            margin-top: 30px;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            line-height: 1.6;
+        }
+        
+        .emoji {
+            font-size: 70px;
+            margin: 30px 0;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
+        }
+        
+        .friends-quote {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            color: rgba(255,255,255,0.95);
+            font-size: 16px;
+            font-style: italic;
+            backdrop-filter: blur(10px);
+        }
+        
+        .photo-gallery {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .photo-upload {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .photo-placeholder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            width: 100%;
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 24px;
+            border: 2px dashed rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-item:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .heart-shower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255,255,255,0.8);
+            font-size: 20px;
+            animation: fall 3s linear forwards;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.8);
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 600px) {
+            .title {
+                font-size: 36px;
+            }
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .time-box {
+                padding: 20px 10px;
+            }
+            .number {
+                font-size: 40px;
+            }
+            .message {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-shower" id="heartShower"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✨ Happy Birthday ✨</h1>
+            <p class="subtitle">Countdown to September 20th</p>
+            <p class="quote">"Could I BE any more excited?"</p>
+        </div>
+        
+        <div class="emoji">💜</div>
+        
+        <div class="countdown">
+            <div class="time-box">
+                <div class="number" id="days">0</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="hours">0</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="minutes">0</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="seconds">0</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="friends-quote">
+            <p>"We'll be there for you..." 💚 And I'll make sure this birthday is unforgettable.</p>
+        </div>
+        
+        <div class="photo-gallery">
+            <div class="photo-upload">📸 Our favorite memories together</div>
+            <div class="photo-placeholder">
+                <div class="photo-item">💭</div>
+                <div class="photo-item">💜</div>
+                <div class="photo-item">🎂</div>
+                <div class="photo-item">🎉</div>
+                <div class="photo-item">💕</div>
+                <div class="photo-item">✨</div>
+            </div>
+        </div>
+        
+        <p class="message">
+            Can't wait to make September 20th absolutely magical for you. 💙<br>
+            You deserve the best birthday ever!
+        </p>
+        
+        <div class="button-group">
+            <button onclick="triggerHearts()">💕 Spread the love</button>
+            <button onclick="changeQuote()">📺 Next Friends quote</button>
+        </div>
+    </div>
+
+    <script>
+        const friendsQuotes = [
+            '"Could I BE any more excited?" - Chandler',
+            '"You\'re my lobster!" - Phoebe',
+            '"How you doin\'?" - Joey',
+            '"We were on a break!" - Ross',
+            '"This is not a control thing." - Monica',
+            '"Oh. My. God." - Janice (😄)',
+            '"I\'ll be there for you..." - Theme song',
+            '"PIVOT! PIVOT! PIVOT!" - Ross',
+            '"The holidays in New York produce so much more culture." - Phoebe'
+        ];
+        
+        let quoteIndex = 0;
+        
+        function changeQuote() {
+            quoteIndex = (quoteIndex + 1) % friendsQuotes.length;
+            document.querySelector('.quote').textContent = friendsQuotes[quoteIndex];
+            triggerHearts();
+        }
+        
+        function triggerHearts() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '💜';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (2 + Math.random() * 2) + 's';
+                    document.getElementById('heartShower').appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 100);
+            }
+        }
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            
+            // Set to September 20th, 2026 at midnight
+            const currentYear = new Date().getFullYear();
+            let countdownDate = new Date(currentYear, 8, 20, 0, 0, 0).getTime(); // Month is 0-indexed, so 8 = September
+            
+            // If September 20th has already passed this year, set it to next year
+            if (now > countdownDate) {
+                countdownDate = new Date(currentYear + 1, 8, 20, 0, 0, 0).getTime();
+            }
+            
+            const distance = countdownDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            
+            if (distance < 0) {
+                document.querySelector('.message').textContent = '🎊 Happy Birthday! 🎊 It\'s time to celebrate YOU!';
+                document.querySelector('.emoji').textContent = '🎂';
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Auto-trigger hearts every 30 seconds
+        setInterval(() => {
+            if (Math.random() > 0.7) triggerHearts();
+        }, 30000);
+    </script>
+</body>
+</html>
