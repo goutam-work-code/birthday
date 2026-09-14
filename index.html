@@ -163,7 +163,7 @@
             position: fixed;
             width: 90%;
             max-width: 700px;
-            height: 85vh;
+            max-height: 90vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
             border-radius: 30px;
             padding: 60px 40px;
@@ -215,13 +215,15 @@
             letter-spacing: 1px;
         }
         
-        .friends-characters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-            animation: slideInLeft 1s ease-out 1.3s both;
+        /* Timer Section */
+        .timer-section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 35px;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: slideInLeft 0.8s ease-out 1.2s both;
         }
         
         @keyframes slideInLeft {
@@ -235,28 +237,54 @@
             }
         }
         
-        .char {
-            font-size: 50px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.2);
+        .timer-label-main {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        
+        .timer-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
+            padding: 15px;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
-        .char:hover {
-            transform: scale(1.2) rotate(15deg);
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .message-content {
+        .timer-card:hover {
             background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            animation: slideInRight 1s ease-out 1.6s both;
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .timer-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .timer-item-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Photo Section */
+        .photo-section {
+            margin: 40px 0;
+            animation: slideInRight 0.8s ease-out 1.4s both;
         }
         
         @keyframes slideInRight {
@@ -270,6 +298,97 @@
             }
         }
         
+        .photo-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 17px;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.4);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Website Coming Soon Section */
+        .coming-soon {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: slideInUp 0.8s ease-out 1.6s both;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .coming-soon-emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: cookingAnimation 2s ease-in-out infinite;
+        }
+        
+        @keyframes cookingAnimation {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(10deg) scale(1.1); }
+        }
+        
+        .coming-soon-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .coming-soon-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        .coming-soon-text strong {
+            color: #ffd700;
+            font-weight: 700;
+        }
+        
+        /* Final Message */
+        .message-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 0.8s ease-out 1.8s both;
+        }
+        
         .message-content p {
             color: rgba(255, 255, 255, 0.95);
             font-size: 18px;
@@ -278,39 +397,16 @@
             font-weight: 300;
         }
         
-        .quote {
-            font-size: 16px;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.85);
-            margin-top: 20px;
+        .message-signature {
+            font-size: 18px;
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.9);
         }
         
-        .countdown-mini {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .countdown-item-number {
-            font-size: 32px;
-            font-weight: 900;
-            color: white;
-        }
-        
-        .countdown-item-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .message-signature strong {
+            font-size: 20px;
+            color: #ffd700;
+            font-weight: 600;
         }
         
         .close-btn {
@@ -350,18 +446,6 @@
             }
         }
         
-        .scroll-hint {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-        
         @media (max-width: 600px) {
             .envelope-wrapper {
                 width: 300px;
@@ -370,12 +454,19 @@
             
             .card {
                 width: 95%;
-                height: 90vh;
                 padding: 40px 25px;
             }
             
             .card-title {
                 font-size: 36px;
+            }
+            
+            .timer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timer-number {
+                font-size: 24px;
             }
             
             .message-content p {
@@ -403,42 +494,57 @@
         <button class="close-btn" onclick="closeCard()">✕</button>
         <div class="card-content">
             <h1 class="card-title">✨ Happy Birthday! ✨</h1>
-            <p class="card-subtitle">To My Amazing Friend</p>
+            <p class="card-subtitle">To My Most Special Person</p>
             
-            <div class="friends-characters">
-                <div class="char">🛋️</div>
-                <div class="char">👗</div>
-                <div class="char">🎸</div>
-                <div class="char">🎬</div>
-                <div class="char">😂</div>
-                <div class="char">🦴</div>
+            <!-- TIMER SECTION -->
+            <div class="timer-section">
+                <div class="timer-label-main">⏰ Time Until Your Big Day</div>
+                <div class="timer-grid">
+                    <div class="timer-card">
+                        <div class="timer-number" id="days">00</div>
+                        <div class="timer-item-label">Days</div>
+                    </div>
+                    <div class="timer-card">
+                        <div class="timer-number" id="hours">00</div>
+                        <div class="timer-item-label">Hours</div>
+                    </div>
+                    <div class="timer-card">
+                        <div class="timer-number" id="minutes">00</div>
+                        <div class="timer-item-label">Minutes</div>
+                    </div>
+                    <div class="timer-card">
+                        <div class="timer-number" id="seconds">00</div>
+                        <div class="timer-item-label">Seconds</div>
+                    </div>
+                </div>
             </div>
             
+            <!-- PHOTO SECTION -->
+            <div class="photo-section">
+                <div class="photo-container">
+                    <!-- CHANGE THIS LINE - Replace "photo.jpg" with your image filename -->
+                    <img src="photo.jpg" alt="Us Together" onerror="this.parentElement.innerHTML='<div class=\"photo-placeholder\">📷</div>'">
+                </div>
+            </div>
+            
+            <!-- COMING SOON SECTION -->
+            <div class="coming-soon">
+                <div class="coming-soon-emoji">👨‍🍳</div>
+                <div class="coming-soon-title">Something Amazing is Cooking!</div>
+                <div class="coming-soon-text">
+                    On <strong>September 20th</strong>, a beautiful surprise website will be waiting for you. 
+                    <br><br>
+                    I'm working on something extra special that you'll absolutely love. Get ready to be amazed! 💫
+                </div>
+            </div>
+            
+            <!-- FINAL MESSAGE -->
             <div class="message-content">
-                <p>Hey beautiful! 💜</p>
-                <p>Today is all about celebrating YOU and everything that makes you incredible. Your laughter, your kindness, your amazing friendship—it all means the world to me.</p>
-                <p>I'm so grateful to have you in my life. You deserve the absolute best, and I promise to make this birthday unforgettable!</p>
-                <p class="quote">"Could I BE any more excited?" - Chandler (because same! 😄)</p>
-            </div>
-            
-            <div class="countdown-mini">
-                <div class="countdown-item">
-                    <div class="countdown-item-number" id="mini-days">00</div>
-                    <div class="countdown-item-label">Days Left</div>
+                <p>Here's to new adventures, unforgettable memories, and all the joy September 20th will bring!</p>
+                <div class="message-signature">
+                    With all my love,<br>
+                    <strong>Your Most Special Person's Special Someone 💕</strong>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-item-number" id="mini-hours">00</div>
-                    <div class="countdown-item-label">Hours Left</div>
-                </div>
-            </div>
-            
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-top: 30px; font-weight: 500;">Get ready for an AMAZING celebration! 🎉</p>
-            
-            <div class="scroll-hint">✨ Scroll down for more surprises ✨</div>
-            
-            <div class="message-content" style="margin-top: 40px;">
-                <p style="font-size: 16px;">Here's to new adventures, unforgettable memories, and all the joy September 20th will bring!</p>
-                <p style="font-size: 16px; margin-top: 20px;">With all my love,<br><strong>Your Friend 💕</strong></p>
             </div>
         </div>
     </div>
@@ -515,14 +621,18 @@
             
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            document.getElementById('mini-days').textContent = String(days).padStart(2, '0');
-            document.getElementById('mini-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
         }
         
         createParticles();
         updateCountdown();
-        setInterval(updateCountdown, 60000);
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
